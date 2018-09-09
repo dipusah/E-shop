@@ -1,6 +1,8 @@
 from django.db import models
 from autoslug import AutoSlugField
 from ckeditor.fields import RichTextField
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 
@@ -22,5 +24,8 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
 
-
-
+class Review(models.Model):
+    rating = models.IntegerField()
+    comment = models.TextField()
+    product = models.ForeignKey(Product)
+    user = models.ForeignKey(User)
