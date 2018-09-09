@@ -17,7 +17,7 @@ class Product(models.Model):
     price = models.FloatField(null=True)
     details = RichTextField()
     featured = models.BooleanField()
-    brand_name = models.CharField()
+    brand_name = models.CharField(max_length=200)
     image = models.ImageField()
     view_count = models.BigIntegerField(default=0)
     pub_date = models.DateTimeField(auto_now=True)
@@ -27,5 +27,5 @@ class Product(models.Model):
 class Review(models.Model):
     rating = models.IntegerField()
     comment = models.TextField()
-    product = models.ForeignKey(Product)
-    user = models.ForeignKey(User)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
