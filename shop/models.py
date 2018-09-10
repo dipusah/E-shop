@@ -13,6 +13,9 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = 'Categories'
 
+    def __str__(self):
+        return self.title
+
 
 class Product(models.Model):
     title = models.CharField(max_length=200)
@@ -25,6 +28,9 @@ class Product(models.Model):
     view_count = models.BigIntegerField(default=0)
     pub_date = models.DateTimeField(auto_now=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
 
 
 class Review(models.Model):
