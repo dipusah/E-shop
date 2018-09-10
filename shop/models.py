@@ -10,6 +10,9 @@ class Category(models.Model):
     title = models.CharField(max_length=200)
     slug = AutoSlugField(populate_from='title')
 
+    class Meta:
+        verbose_name_plural = 'Categories'
+
 
 class Product(models.Model):
     title = models.CharField(max_length=200)

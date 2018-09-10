@@ -1,3 +1,6 @@
 .idea
 venv
 db.sqlite3
+hamrocart/__pycache__
+shop/__pycache__
+shop/migrations/__pycache__
