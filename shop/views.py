@@ -14,5 +14,5 @@ def test(request):
 
 def register(request):
     form = SignUpForm()
-    context = {'form': SignUpForm}
+    context = {'form': form}
     return render(request, 'registration/register.html', context)
