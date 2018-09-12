@@ -38,3 +38,11 @@ class Review(models.Model):
     comment = models.TextField()
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+
+class Slider(models.Model):
+    image = models.ImageField(upload_to='slides')
+    caption = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.caption

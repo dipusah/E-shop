@@ -4,3 +4,4 @@ db.sqlite3
 hamrocart/__pycache__
 shop/__pycache__
 shop/migrations/__pycache__
+media
