@@ -2,6 +2,7 @@ from django.db import models
 from autoslug import AutoSlugField
 from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
+from sorl.thumbnail import ImageField
 
 
 # Create your models here.
@@ -24,7 +25,7 @@ class Product(models.Model):
     details = RichTextField()
     featured = models.BooleanField()
     brand_name = models.CharField(max_length=200)
-    image = models.ImageField()
+    image = ImageField(upload_to='products')
     view_count = models.BigIntegerField(default=0)
     pub_date = models.DateTimeField(auto_now=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
@@ -41,7 +42,7 @@ class Review(models.Model):
 
 
 class Slider(models.Model):
-    image = models.ImageField(upload_to='slides')
+    image = ImageField(upload_to='slides')
     caption = models.CharField(max_length=255)
 
     def __str__(self):

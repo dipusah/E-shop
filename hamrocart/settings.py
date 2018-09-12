@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'shop',
     'bootstrap3',
+    'sorl.thumbnail',
 ]
 
 MIDDLEWARE = [
