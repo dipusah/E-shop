@@ -33,3 +33,15 @@ def register(request):
         form = SignUpForm()
     context = {'form': form}
     return render(request, 'registration/register.html', context)
+
+
+def product(request, product_slug):
+    pro = Product.objects.get(slug=product_slug)
+    categories = Category.objects.order_by('title').all()
+
+    context = {
+        'product': pro,
+        'categories': categories
+    }
+
+    return render(request, 'shop/product.html', context)
