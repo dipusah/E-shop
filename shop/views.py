@@ -8,7 +8,7 @@ from .models import Slider, Product
 def index(request):
     slides = Slider.objects.all()
     featured_products = Product.objects.filter(featured=True).all()
-    latest_products = Product.objects.order_by('-pub_date')[:5]
+    latest_products = Product.objects.order_by('-pub_date')[:8]
     context = {
         'slides': slides,
         'featured_products': featured_products,
