@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import SignUpForm
-from .models import Slider, Product
+from .models import Slider, Product, Category
 
 
 # Create your views here.
@@ -9,10 +9,12 @@ def index(request):
     slides = Slider.objects.all()
     featured_products = Product.objects.filter(featured=True).all()
     latest_products = Product.objects.order_by('-pub_date')[:8]
+    categories = Category.objects.order_by('title').all()
     context = {
         'slides': slides,
         'featured_products': featured_products,
-        'latest_products': latest_products
+        'latest_products': latest_products,
+        'categories': categories
     }
     return render(request, 'shop/index.html', context)
 
