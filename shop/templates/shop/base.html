@@ -88,13 +88,15 @@
                             </div>
                             <strong class="text-uppercase">
 
-
-                                My Account
+                                {% if user.is_authenticated %}
+                                    {{ user.username }}
+                                {% else %}
+                                    My Account
+                                {% endif %}
 
                             </strong>
                         </div>
-                        <a href="{% url 'login' %}" class="text-uppercase">Login</a> / <a href="{% url 'register' %}"
-                                                                                          class="text-uppercase">Join</a>
+                        <a href="{% url 'login' %}" class="text-uppercase">Login</a>/<a href="{% url 'register' %}"  class="text-uppercase">Join</a>
                     </li>
                     <!-- /Account -->
 
