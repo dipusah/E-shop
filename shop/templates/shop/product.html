@@ -1,6 +1,7 @@
 {% extends 'shop/base.html' %}
 
 {% load thumbnail %}
+
 {% load app_filters %}
 
 {% block content %}
@@ -69,11 +70,9 @@
                                                     </a>
                                                     </div>
                                                     <div class="review-rating pull-right">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-o empty"></i>
+                                                        {% for star in review.rating|range %}
+                                                            <i class="fa fa-star"></i>
+                                                        {% endfor %}
                                                     </div>
                                                 </div>
                                                 <div class="review-body">
