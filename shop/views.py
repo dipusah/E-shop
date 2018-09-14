@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from .forms import SignUpForm, ReviewForm
 from .models import Slider, Product, Category
+from django.contrib.auth.models import User
+from django.http import JsonResponse
 
 
 # Create your views here.
@@ -54,3 +56,8 @@ def product(request, product_slug):
     }
 
     return render(request, 'shop/product.html', context)
+
+
+def check_uniqueness(request, username):
+    exists = User.objects.filter(username=username).exists()
+    return JsonResponse({'exists': exists})
