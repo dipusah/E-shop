@@ -20,6 +20,15 @@
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
             <form method="post" action="{% url 'register' %}">
+
+                <div class="alert alert-danger" id="not_available" style="display: none">
+                    Username is already taken
+                </div>
+
+                <div class="alert alert-info" id="available" style="display: none">
+                    Username is available
+                </div>
+
                 {% csrf_token %}
                 {% bootstrap_form form %}
 
@@ -33,4 +42,21 @@
     {# Assumes you setup the password_reset view in your URLconf #}
     <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
 
+{% endblock %}
+
+
+{% block scripts %}
+    <script>
+        $('#id_username').focusout(function () {
+            $.get('/check-username/' + this.value).done(function (response) {
+                if (response.exists) {
+                    $('#not_available').show()
+                    $('#available').hide()
+                } else {
+                    $('#not_available').hide()
+                    $('#available').show()
+                }
+            })
+        })
+    </script>
 {% endblock %}
