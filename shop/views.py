@@ -61,3 +61,25 @@ def product(request, product_slug):
 def check_uniqueness(request, username):
     exists = User.objects.filter(username=username).exists()
     return JsonResponse({'exists': exists})
+
+
+def category(request, category_slug):
+    cat = Category.objects.get(slug=category_slug)
+    categories = Category.objects.order_by('title').all()
+
+    return render(request, 'shop/category.html', {'category': cat, 'categories': categories})
+
+
+def search(request):
+    categories = Category.objects.order_by('title').all()
+    q = request.GET.get('search', None)
+
+    if q:
+        products = Product.objects.filter(title__contains=q)
+        return render(request, 'shop/search.html', {
+            'categories': categories,
+            'search': q,
+            'products': products
+        })
+    else:
+        return redirect('/')

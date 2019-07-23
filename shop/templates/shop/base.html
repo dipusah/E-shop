@@ -65,7 +65,7 @@
 
                 <!-- Search -->
                 <div class="header-search">
-                    <form>
+                    <form action="{% url 'search' %}">
                         <input class="input search-input" type="text" placeholder="Enter your keyword" name="search">
                         <select class="input search-categories" name="category_id">
                             <option value="0">All Categories</option>
@@ -145,7 +145,7 @@
                 <ul class="category-list {% if request.path == '/' %} open {% endif %}">
 
                     {% for category in categories %}
-                        <li><a href="#">{{ category.title }}</a></li>
+                        <li><a href="{% url 'category_page' category.slug %}">{{ category.title }}</a></li>
                     {% endfor %}
 
                 </ul>
@@ -157,7 +157,7 @@
                 <span class="menu-header">Menu <i class="fa fa-bars"></i></span>
                 <ul class="menu-list">
                     {% for category in categories %}
-                        <li><a href="#">{{ category.title }}</a></li>
+                        <li><a href="{% url 'category_page' category.slug %}">{{ category.title }}</a></li>
                     {% endfor %}
 
                 </ul>
@@ -213,50 +213,16 @@
             </div>
             <!-- /footer widget -->
 
-            <!-- footer widget -->
-            <div class="col-md-3 col-sm-6 col-xs-6">
-                <div class="footer">
-                    <h3 class="footer-header">My Account</h3>
-                    <ul class="list-links">
-                        <li><a href="#">My Account</a></li>
-                        <li><a href="#">My Wishlist</a></li>
-                        <li><a href="#">Compare</a></li>
-                        <li><a href="#">Checkout</a></li>
-                        <li><a href="#">Login</a></li>
-                    </ul>
-                </div>
-            </div>
+
             <!-- /footer widget -->
 
             <div class="clearfix visible-sm visible-xs"></div>
 
             <!-- footer widget -->
-            <div class="col-md-3 col-sm-6 col-xs-6">
-                <div class="footer">
-                    <h3 class="footer-header">Customer Service</h3>
-                    <ul class="list-links">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Shiping & Return</a></li>
-                        <li><a href="#">Shiping Guide</a></li>
-                        <li><a href="#">FAQ</a></li>
-                    </ul>
-                </div>
-            </div>
+
             <!-- /footer widget -->
 
             <!-- footer subscribe -->
-            <div class="col-md-3 col-sm-6 col-xs-6">
-                <div class="footer">
-                    <h3 class="footer-header">Stay Connected</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
-                    <form>
-                        <div class="form-group">
-                            <input class="input" placeholder="Enter Email Address">
-                        </div>
-                        <button class="primary-btn">Join Newslatter</button>
-                    </form>
-                </div>
-            </div>
             <!-- /footer subscribe -->
         </div>
         <!-- /row -->
